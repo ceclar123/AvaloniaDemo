@@ -1,0 +1,43 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+        WindowStartupLocation="CenterScreen"
+        x:Class="AvaloniaDemo.MainWindow"
+        Title="AvaloniaDemo">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- 顶部：菜单（由后端动态生成） -->
+        <Menu Grid.Row="0" Name="MainMenu" />
+
+        <!-- 中间：大的 Tab 区域 -->
+        <TabControl Grid.Row="1" Name="MainTabControl">
+            <TabItem Header="Home">
+                <Grid>
+                    <TextBlock Text="欢迎使用 AvaloniaDemo" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Log">
+                <Grid>
+                    <Border Padding="8">
+                        <TextBlock Text="日志输出区域" />
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- 底部：状态显示区域 -->
+        <Border Grid.Row="2" BorderThickness="1,0,0,0" BorderBrush="LightGray" Padding="6">
+            <TextBlock Name="StatusLabel" Text="Ready" VerticalAlignment="Center" />
+        </Border>
+
+    </Grid>
+
+</Window>
