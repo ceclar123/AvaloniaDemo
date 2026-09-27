@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace AvaloniaDemo.ExtControl.DataDisplay
 {
-    public partial class TextDisplayUserControl : BaseUserControl
+    public partial class TextDisplaySelectableTextBlockUserControl : BaseUserControl
     {
-        public TextDisplayUserControl()
+        public TextDisplaySelectableTextBlockUserControl()
         {
             InitializeComponent();
         }

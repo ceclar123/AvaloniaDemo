@@ -12,7 +12,13 @@ namespace AvaloniaDemo
             var services = new ServiceCollection();
 
             // Register views and controls
-            services.AddTransient<TextDisplayUserControl>();
+            // Label
+            services.AddTransient<TextDisplayLabelUserControl>();
+            // TextBlock
+            services.AddTransient<TextDisplayTextBlockUserControl>();
+            // SelectableTextBlock
+            services.AddTransient<TextDisplaySelectableTextBlockUserControl>();
+
             services.AddTransient<HomeView>();
 
             // Register MainWindow as singleton so we can get the same instance from DI

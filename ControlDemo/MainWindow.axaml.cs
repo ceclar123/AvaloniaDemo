@@ -25,27 +25,41 @@ public partial class MainWindow : Window
         // 在构造器中初始化工厂字典，以便工厂 lambda 可以捕获 this（用于注入父窗口等）
         _viewFactory = new Dictionary<string, Func<Control>>(StringComparer.OrdinalIgnoreCase)
         {
-            // 简单工厂：直接创建 HomeView（从 DI 解析）
-            ["file.new"] = () => serviceProvider.GetRequiredService<Views.HomeView>(),
-
             // 带注入的工厂：从 DI 解析并注入 ParentWindow（BaseUserControl 提供此属性）
-            ["file.open"] = () =>
+            ["DataDisplay.TextDisplay.Label"] = () =>
             {
-                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplayUserControl>();
+                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplayLabelUserControl>();
+                if (c is ExtControl.BaseUserControl b) b.ParentWindow = this;
+                return c;
+            },
+            ["DataDisplay.TextDisplay.TextBlock"] = () =>
+            {
+                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplayTextBlockUserControl>();
+                if (c is ExtControl.BaseUserControl b) b.ParentWindow = this;
+                return c;
+            },
+            ["DataDisplay.TextDisplay.SelectableTextBlock"] = () =>
+            {
+                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplaySelectableTextBlockUserControl>();
                 if (c is ExtControl.BaseUserControl b) b.ParentWindow = this;
                 return c;
             },
 
+
+
+            // 简单工厂：直接创建 HomeView（从 DI 解析）
+            ["file.new"] = () => serviceProvider.GetRequiredService<Views.HomeView>(),
+
             ["view.output"] = () =>
             {
-                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplayUserControl>();
+                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplayLabelUserControl>();
                 if (c is ExtControl.BaseUserControl b) b.ParentWindow = this;
                 return c;
             },
 
             ["view.properties"] = () =>
             {
-                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplayUserControl>();
+                var c = serviceProvider.GetRequiredService<ExtControl.DataDisplay.TextDisplayLabelUserControl>();
                 if (c is ExtControl.BaseUserControl b) b.ParentWindow = this;
                 return c;
             },
@@ -93,8 +107,12 @@ public partial class MainWindow : Window
         // 简单的菜单定义，可根据需要改为从配置或服务加载
         var menuDefs = new List<MenuDef>
         {
-            new MenuDef("File", children: new[] {
-                new MenuDef("New", key: "file.new"),
+            new MenuDef("DataDisplay", children: new[] {
+                new MenuDef("TextDisplay", children: new[] {
+                    new MenuDef("Label", key: "DataDisplay.TextDisplay.Label"),
+                    new MenuDef("TextBlock", key: "DataDisplay.TextDisplay.TextBlock"),
+                    new MenuDef("SelectableTextBlock", key: "DataDisplay.TextDisplay.SelectableTextBlock"),
+                }),
                 new MenuDef("Open", key: "file.open"),
                 new MenuDef("Exit", key: "file.exit")
             }),
@@ -187,7 +205,7 @@ public partial class MainWindow : Window
             list.Add(tab);
             tabControl.SelectedItem = tab;
             return;
-        }        
+        }
     }
 
     private sealed class MenuDef

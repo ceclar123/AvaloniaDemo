@@ -35,7 +35,7 @@
 
         <!-- 底部：状态显示区域 -->
         <Border Grid.Row="2" BorderThickness="1,0,0,0" BorderBrush="LightGray" Padding="6">
-            <TextBlock Name="StatusLabel" Text="Ready" VerticalAlignment="Center" />
+            <SelectableTextBlock Name="StatusLabel" Text="Ready" VerticalAlignment="Center" />
         </Border>
 
     </Grid>

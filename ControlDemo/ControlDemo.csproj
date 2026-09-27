@@ -28,4 +28,9 @@
 		<None Remove="Views\**\*.axaml" />
 		<Content Remove="Views\**\*.axaml" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="ExtControl\DataDisplay\TextDisplayLabelUserControl.axaml.cs">
+	    <DependentUpon>TextDisplayLabelUserControl.axaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 </Project>

@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaDemo.ExtControl.DataDisplay.TextDisplayTextBlockUserControl">
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="30,30,30,120,60,30,30,60,30,100" Margin="8" RowSpacing="10">
+        <SelectableTextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,8,4"
+                             Text="官方文档：https://docs.avaloniaui.net/controls/data-display/text-display/textblock"/>
+
+        <Label Grid.Row="1" Grid.Column="0"  Content="加粗" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="tBlockBold" FontSize="18" FontWeight="Bold" TextAlignment="Right">Heading加粗</TextBlock>
+
+        <Label Grid.Row="2" Grid.Column="0"  Content="单行" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="tBlockSingle" FontStyle="Italic" xml:space="preserve" TextAlignment="Center">单行This is  a single line.</TextBlock>
+
+        <Label Grid.Row="3" Grid.Column="0"  Content="多行" Margin="0,0,8,4" />
+        <TextBlock  Grid.Row="3" Grid.Column="1" x:Name="tBlockMulti" FontStyle="Italic" xml:space="preserve">This is a multi-line
+        display that has
+        returns in it.
+        The text block
+        respects the line
+        breaks set out in XAML.
+        </TextBlock>
+
+        <Label Grid.Row="4" Grid.Column="0"  Content="自动换行" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="4" Grid.Column="1" x:Name="tBlockAutoWrap" FontStyle="Italic" xml:space="preserve" TextAlignment="Center" TextWrapping="Wrap">单行This is  a single line自动换行单行This is  a single line自动换行单行This is  a single line自动换行单行This is  a single line自动换行.</TextBlock>
+
+        <Label Grid.Row="5" Grid.Column="0"  Content="文本裁剪" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="tBlockTrim" FontStyle="Italic" xml:space="preserve" TextAlignment="Center"  Width="100" TextTrimming="CharacterEllipsis">单行This is  a single line自动换行单行This is  a single line自动换行单行This is  a single line自动换行单行This is  a single line自动换行.</TextBlock>
+
+        <Label Grid.Row="6" Grid.Column="0"  Content="Run" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="6" Grid.Column="1" x:Name="tBlockRun">单行This is  a <Run FontSize="24" FontWeight="Bold" Foreground="Orange" Text="single line" /> 自动换行</TextBlock>
+
+        <Label Grid.Row="7" Grid.Column="0"  Content="LineBreak" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="7" Grid.Column="1" x:Name="tBlocLineBreak">单行This is  a single line" <LineBreak /> 自动换行</TextBlock>
+
+        <Label Grid.Row="8" Grid.Column="0"  Content="Span" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="8" Grid.Column="1" x:Name="tBlockSpan">This text is <Span Foreground="Green"> green with <Bold>bold sections,</Bold>
+            <Italic>italic <Span Foreground="Red">red</Span> sections,</Italic>
+            some
+            <Run FontSize="24"> enlarged font runs,</Run>
+            and</Span>
+            back to the original formatting
+        </TextBlock>
+
+        <Label Grid.Row="9" Grid.Column="0" Content="内嵌控件" Margin="0,0,8,4" />
+        <TextBlock Grid.Row="9" Grid.Column="1" x:Name="tBlockInlineCtl" TextWrapping="Wrap">
+            This <Span BaselineAlignment="TextTop">example</Span> shows the <Bold>power</Bold> of   
+            in creating rich text displays with
+            <InlineUIContainer>
+                <Button Padding="0,8,0,0">
+                    <TextBlock ClipToBounds="False" FontSize="24" Text="inline button" />
+                </Button>
+            </InlineUIContainer>
+            inline controls
+        </TextBlock>
+
+    </Grid>
+</UserControl>
